@@ -1,4 +1,4 @@
-# Mono Finance Tracker
+# Minift ( Minimalist Finance Tracker )
 
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=plastic&logo=typescript&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=plastic&logo=python&logoColor=white)
