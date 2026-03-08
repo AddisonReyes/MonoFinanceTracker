@@ -3,6 +3,10 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt  
 from django.contrib.auth.decorators import login_required
 from .services import register_user, login_user, logout_user
+from django.middleware.csrf import get_token
+
+def csrf_view(request):
+    return JsonResponse({'csrfToken': get_token(request)})
 
 @csrf_exempt
 def register_view(request):
@@ -25,6 +29,7 @@ def login_view(request):
         return JsonResponse({'message': 'Login successful', 'id': user.id})
     except (ValueError, KeyError) as e:
         return JsonResponse({'error': str(e)}, status=401)
+
 
 @login_required
 def logout_view(request):
