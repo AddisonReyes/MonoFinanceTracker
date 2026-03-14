@@ -1,9 +1,11 @@
 import json
+
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
-from .services import register_user, login_user, logout_user
+
 from .jwt import create_login_token
+from .services import login_user, logout_user, register_user
 
 
 @csrf_exempt
@@ -13,7 +15,10 @@ def register_view(request):
     data = json.loads(request.body)
     try:
         user = register_user(data["email"], data["password"])
-        return JsonResponse({"message": "User created", "id": user.id}, status=201)
+        return JsonResponse(
+            {"message": "User created", "id": user.id},
+            status=201,
+        )
     except (ValueError, KeyError) as e:
         return JsonResponse({"error": str(e)}, status=400)
 
