@@ -38,7 +38,8 @@ RUN python manage.py collectstatic --noinput
 EXPOSE 8000
 
 # Run migrations then start gunicorn
-CMD python manage.py migrate --noinput && \
+CMD python manage.py collectstatic --noinput && \
+    python manage.py migrate --noinput && \
     gunicorn minift.wsgi \
         --bind 0.0.0.0:$PORT \
         --workers 2 \
