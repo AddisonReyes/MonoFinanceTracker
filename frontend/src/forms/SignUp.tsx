@@ -16,7 +16,7 @@ function SignUp() {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Las contrasenas no coinciden.");
+      alert("Passwords do not match.");
       return;
     }
 
@@ -25,7 +25,7 @@ function SignUp() {
       await signIn(email, password);
       navigate("/dashboard");
     } catch (err) {
-      alert("No se pudo crear la cuenta.");
+      alert("Could not create account.");
       console.log(`Error: ${err}`);
     }
 
@@ -49,9 +49,8 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <h3>Register</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="space-y-4">
+      <form className="space-y-3" onSubmit={handleSubmit}>
         <FormInput
           label="Email"
           type="email"
@@ -79,7 +78,12 @@ function SignUp() {
           onChange={handleConfirmPasswordChange}
           required
         />
-        <button type="submit">Sign Up</button>
+        <button
+          type="submit"
+          className="mt-2 inline-flex w-full items-center justify-center rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-600/30"
+        >
+          Sign up
+        </button>
       </form>
     </div>
   );

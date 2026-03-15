@@ -15,7 +15,7 @@ function SignIn() {
       await signIn(email, password);
       navigate("/dashboard");
     } catch (err) {
-      alert("Usuario o contraseña incorrectos.");
+      alert("Invalid email or password.");
       console.log(`Error: ${err}`);
     } finally {
       setPassword("");
@@ -32,9 +32,8 @@ function SignIn() {
   };
 
   return (
-    <div>
-      <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
+    <div className="space-y-4">
+      <form className="space-y-3" onSubmit={handleSubmit}>
         <FormInput
           label="Email"
           type="email"
@@ -53,7 +52,12 @@ function SignIn() {
           onChange={handlePasswordChange}
           required
         />
-        <button type="submit">Sign In</button>
+        <button
+          type="submit"
+          className="mt-2 inline-flex w-full items-center justify-center rounded-md bg-brand-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-600/30"
+        >
+          Sign in
+        </button>
       </form>
     </div>
   );
