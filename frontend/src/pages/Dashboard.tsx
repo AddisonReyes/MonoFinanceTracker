@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 
 import MainLayout from "../layout/MainLayout";
 import {
@@ -22,7 +22,7 @@ function toNumber(value: string) {
 }
 
 function Dashboard() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [summary, setSummary] = useState<BalanceSummary | null>(null);
   const [entries, setEntries] = useState<Entry[]>([]);
@@ -323,6 +323,7 @@ function Dashboard() {
                   name="is_recurring"
                   type="checkbox"
                   checked={isRecurring}
+                  aria-label="Is recurring"
                   onChange={(ev) => setIsRecurring(ev.target.checked)}
                   className="h-4 w-4 accent-brand-600"
                 />
